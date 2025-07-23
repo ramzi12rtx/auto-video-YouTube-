@@ -18,10 +18,8 @@ jobs:
         with:
           python-version: '3.9'
 
-      - 
-- name: Install Python dependencies
+      - name: Install Python dependencies
   run: |
     pip install moviepy
+    pip install imageio imageio-ffmpeg
     pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
-      - name: Run video generator
-        run: python generate_video.py
