@@ -2,8 +2,8 @@ name: Auto Video Generator
 
 on:
   schedule:
-    - cron: '0 10 * * *'  # يشغل كل يوم الساعة 10 صباحًا UTC
-  workflow_dispatch:      # يسمح لك بتشغيله يدويًا من GitHub
+    - cron: '0 10 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
