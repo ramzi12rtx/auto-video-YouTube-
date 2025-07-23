@@ -23,6 +23,6 @@ jobs:
           pip install moviepy
           pip install imageio imageio-ffmpeg
           pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
-
+          pip install moviepy
       - name: Run video generator
         run: python generate_video.py
