@@ -2,7 +2,7 @@ name: Auto Video Generator
 
 on:
   schedule:
-    - cron: '0 10 * * *'
+    - cron: '0 10 * * *'  # كل يوم الساعة 10 صباحًا UTC (حوالي 11 أو 12 ظهرًا بتوقيت الجزائر)
   workflow_dispatch:
 
 jobs:
