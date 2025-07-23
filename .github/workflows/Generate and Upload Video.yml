@@ -1,38 +1,9 @@
-name: Generate and Upload Video
+from moviepy.editor import ColorClip
 
-on:
-  schedule:
-    - cron: '0 0 * * *'
-  workflow_dispatch:
+def generate():
+    # فيديو خلفية سوداء مدته 10 ثواني
+    clip = ColorClip(size=(1280, 720), color=(0, 0, 0), duration=10)
+    clip.write_videofile("video_content/output.mp4", fps=24)
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-
-    - name: Install ffmpeg (needed by moviepy)
-      run: |
-        sudo apt update
-        sudo apt install -y ffmpeg
-
-    - name: Install dependencies
-      run: |
-        pip install --upgrade pip
-        pip install moviepy
-        pip install google-api-python-client google-auth google-auth-oauthlib
-
-    - name: Generate video
-      run: python generate_video.py
-
-    - name: Upload to YouTube
-      run: python upload_youtube.py
-      env:
-        GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+if __name__ == "__main__":
+    generate()
